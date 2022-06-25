@@ -1,0 +1,12 @@
+.edit-form__close-icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -36px;
+  right: 0;
+}
+
+.edit-form__close-icon:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
