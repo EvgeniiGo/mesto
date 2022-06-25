@@ -1,0 +1,22 @@
+.profile__name {
+  color: white;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 33px;
+  margin: 0;
+  display: inline-flex;
+}
+
+@media screen and (min-width: 635px) {
+  .profile__name {
+    font-size: 35px;
+    line-height: 41px;
+  }
+}
+
+@media screen and (min-width: 934px) {
+  .profile {
+    font-size: 42px;
+    line-height: 48px;
+  }
+}
