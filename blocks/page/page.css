@@ -1,0 +1,9 @@
+.page {
+  background-color: black;
+  margin: 0;
+  font-family: Inter, sans-serif;
+  color: black;
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+}
