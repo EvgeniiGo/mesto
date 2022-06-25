@@ -20,6 +20,14 @@
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+/* section Card-grid */
+@import url(../blocks/card-grid/card-grid.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__bottom/card__bottom.css);
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__icon/card__icon.css);
+
 
 /* Footer styles */
 @import url(../blocks/footer/footer.css);
