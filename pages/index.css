@@ -1,0 +1,13 @@
+@import url(../vendor/normalize.css);
+
+/* Fonts */
+@import url(../vendor/fonts.css);
+
+/* Styles of the page */
+@import url(../blocks/page/page.css);
+
+/* Header styles */
+@import url(../blocks/header/header.css);
+
+/* Footer styles */
+@import url(../blocks/footer/footer.css);
