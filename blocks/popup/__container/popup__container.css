@@ -1,11 +1,7 @@
-.edit-form {
+.popup__content {
   width: 282px;
   height: 322px;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -161px;
-  margin-left: -141px;
   background-color: white;
   box-sizing: border-box;
   padding: 25px 22px;
@@ -13,15 +9,12 @@
   border: none;
   display: flex;
   flex-direction: column;
-  display: none;
 }
 
 @media screen and (min-width: 635px) {
-  .edit-form {
+  .popup__content {
     width: 430px;
     height: 330px;
     padding: 35px 36px;
-    margin-top: -165px;
-    margin-left: -215px;
   }
 }

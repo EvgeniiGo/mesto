@@ -1,4 +1,4 @@
-.edit-form__save-button {
+.popup__save-button {
   background-color: black;
   color: white;
   font-size: 14px;
@@ -10,13 +10,13 @@
   padding: 14px 0;
 }
 
-.edit-form__save-button:hover {
+.popup__save-button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 @media screen and (min-width: 635px) {
-  .edit-form__save-button {
+  .popup__save-button {
     padding: 14px 0 18px;
   }
 }
