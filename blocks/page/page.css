@@ -1,10 +1,12 @@
 .page {
   background-color: black;
   margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: Inter, Arial, sans-serif;
   color: black;
   font-weight: normal;
   font-style: normal;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

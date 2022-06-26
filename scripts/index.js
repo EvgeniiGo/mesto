@@ -8,25 +8,33 @@ let button = profile.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let inputName = popup.querySelector('.popup__input_type_name');
 let inputAbout = popup.querySelector('.popup__input_type_about');
-let save = popup.querySelector('.popup__save-button');
-let close = popup.querySelector('.popup__close-icon');
+let save = popup.querySelector('.popup__form');
+let close = popup.querySelector('.popup__close-button');
 
-// Запускаем попап при нажатии на кнопку редактирования
-button.addEventListener('click', displayPopup);
 
-// Закрываем попап при нажатии на крестик
-close.addEventListener('click', displayPopup);
-
-// Меняем видимость попапа
-function displayPopup() {
-  popup.classList.toggle('popup_opened');
+// Открываем попап
+function openPopup() {
+  popup.classList.add('popup_opened');
 }
 
-// При сохранении меняем текст полей
-save.addEventListener('click', updateFields);
+// Закрываем попап
+function closePopup() {
+  popup.classList.remove('popup_opened');
+}
 
-function updateFields() {
+// Присваиваем полям введенные значения и закрываем попап
+function updateFields(evt) {
+  evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
-  displayPopup()
+  closePopup();
 }
+
+// Запускаем попап при нажатии на кнопку редактирования
+button.addEventListener('click', openPopup);
+
+// Закрываем попап при нажатии на крестик
+close.addEventListener('click', closePopup);
+
+// При сохранении меняем текст полей
+save.addEventListener('submit', updateFields);

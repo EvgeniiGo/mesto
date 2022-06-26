@@ -9,5 +9,7 @@
 @media screen and (min-width: 635px) {
   .footer__copyright {
     padding: 67px 0 60px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }

@@ -4,13 +4,16 @@
   font-size: 27px;
   line-height: 33px;
   margin: 0;
-  display: inline-flex;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 635px) {
   .profile__name {
     font-size: 35px;
     line-height: 41px;
+
   }
 }
 

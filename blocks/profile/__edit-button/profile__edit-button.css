@@ -9,8 +9,9 @@
   background-position: center;
   background-size: 7.5px 7.5px;
   background-color: black;
-  margin: 8px auto 0 10px;
   position: absolute;
+  right: -28px;
+  top: 8px;
 }
 
 .profile__edit-button:hover {
@@ -20,6 +21,10 @@
 
 @media screen and (min-width: 635px) {
   .profile__edit-button {
-    margin: 15px auto 0 18px;
+    top: 12px;
+    right: -42px;
+    width: 24px;
+    height: 24px;
+    background-size: 10px 10px;
   }
 }
