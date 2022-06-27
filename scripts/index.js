@@ -12,20 +12,16 @@ let save = popup.querySelector('.popup__form');
 let close = popup.querySelector('.popup__close-button');
 
 
-// Открываем попап
+// Открываем попап и присваиваем инпутам значения из профиля
 function openPopup() {
-  popup.classList.add('popup_opened');
-  // Присваиваем инпутам значения из профиля
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
+  popup.classList.add('popup_opened');
 }
 
 // Закрываем попап
 function closePopup() {
   popup.classList.remove('popup_opened');
-  // Оставляем инпутам старые значения
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileAbout.textContent;
 }
 
 // Присваиваем полям новые значения и закрываем попап
@@ -33,7 +29,7 @@ function updateFields(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
-  popup.classList.remove('popup_opened');
+  closePopup();
 }
 
 // Запускаем попап при нажатии на кнопку редактирования
