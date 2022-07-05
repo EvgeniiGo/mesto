@@ -31,48 +31,6 @@
       </section>
 
       <section class="card-grid">
-        <div class="card">
-          <img src="./images/Karachaevsk.jpg" alt="Монастырь в Карачаевске" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Карачаевск</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/Elbrus.png" alt="Эльбрус на рассвете" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/Dombay.png" alt="Заснеженные горы" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/Elbrus.png" alt="Эльбрус на рассвете" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/Dombay.png" alt="Заснеженные горы" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./images/Karachaevsk.jpg" alt="Монастырь в Карачаевске" class="card__image">
-          <div class="card__bottom">
-            <h2 class="card__title">Карачаево-Черкесия</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </div>
       </section>
     </main>
 
@@ -96,6 +54,15 @@
     </div>
   </div>
 
+  <template id="card-template">
+    <div class="card">
+      <img class="card__image">
+      <div class="card__bottom">
+        <h2 class="card__title"></h2>
+        <button type="button" class="card__like-button"></button>
+      </div>
+    </div>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 
