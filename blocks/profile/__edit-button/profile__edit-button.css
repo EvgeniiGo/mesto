@@ -12,6 +12,7 @@
   position: absolute;
   right: -28px;
   top: 8px;
+  transition: opacity .3s;
 }
 
 .profile__edit-button:hover {

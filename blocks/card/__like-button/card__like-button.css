@@ -4,6 +4,7 @@
   border: none;
   background-image: url(../../../images/like.svg);
   background-color: white;
+  transition: opacity .3s;
 }
 
 .card__like-button:hover {
