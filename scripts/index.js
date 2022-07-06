@@ -32,8 +32,17 @@ const grid = document.querySelector('.card-grid');
 function addCard(title, link) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  cardElement.querySelector('.card__image').src = link;
-  cardElement.querySelector('.card__title').textContent = title;
+  const cardImage = cardElement.querySelector('.card__image');
+  cardImage.src = link;
+  const cardTitle = cardElement.querySelector('.card__title');
+  cardTitle.textContent = title;
+
+  // Открывает попап с картинкой
+  cardImage.addEventListener('click', function () {
+    image.src = cardImage.src;
+    imageName.textContent = cardTitle.textContent;
+    imagePopup.classList.add('popup_opened');
+  })
 
   // Изменение состояния кнопки Лайк по клику
   const likeButton = cardElement.querySelector('.card__like-button');
@@ -42,6 +51,12 @@ function addCard(title, link) {
   }
   likeButton.addEventListener('click', changeLikeState);
 
+  // Удаление карточки нажатием на урну
+  const deleteButton = cardElement.querySelector('.card__delete-button')
+  function deleteCard() {
+    cardElement.remove();
+  }
+  deleteButton.addEventListener('click', deleteCard)
   return cardElement;
 }
 
@@ -132,7 +147,19 @@ cancelButton.addEventListener('click', closeCardAddPopup);
 // При нажатии на кнопку создаем новую карточку и закрываем форму
 addButton.addEventListener('submit', addNewCard);
 
+// Открываем попап с картинкой
+const imagePopup = document.querySelector('#imagePopup');
+const image = imagePopup.querySelector('.popup__image');
+const imageName = imagePopup.querySelector('.popup__image-name');
 
+function closeImagePopup() {
+  image.src = "";
+  imageName.textContent = "";
+  imagePopup.classList.remove('popup_opened');
+}
+
+const imageCloseButton = imagePopup.querySelector('.popup__close-button');
+imageCloseButton.addEventListener('click', closeImagePopup);
 
 
 

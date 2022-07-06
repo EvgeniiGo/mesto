@@ -68,6 +68,16 @@
     </div>
   </div>
 
+  <div id="imagePopup" class="popup popup_bg-opacity_max">
+    <div class="popup__image-container">
+      <figure class="popup__figure">
+        <img src="" class="popup__image">
+        <figcaption class="popup__image-name"></figcaption>
+      </figure>
+      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
   <template id="card-template">
     <div class="card">
       <img class="card__image">
@@ -75,8 +85,10 @@
         <h2 class="card__title"></h2>
         <button type="button" class="card__like-button"></button>
       </div>
+      <button type="button" class="card__delete-button"></button>
     </div>
   </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 
