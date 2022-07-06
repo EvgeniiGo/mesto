@@ -39,15 +39,29 @@
     </footer>
 
     <!-- Формы, которые невидимы по умолчанию и вызываются при нажатии на кнопку -->
-    <div class="popup">
+    <div id="profileUpdatePopup" class="popup">
       <div class="popup__container">
         <form class="popup__form" name="edit-form">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" value="Жак-Ив Кусто" placeholder="Имя" name="inputName" required
-            class="popup__input popup__input_type_name">
-          <input type="text" value="Исследователь океана" placeholder="О себе" name="inputAbout" required
-            class="popup__input popup__input_type_about">
+          <input type="text" value="Жак-Ив Кусто" placeholder="Имя" name="inputTitle" required
+            class="popup__input popup__input_type_title">
+          <input type="text" value="Исследователь океана" placeholder="О себе" name="inputSubtitle" required
+            class="popup__input popup__input_type_subtitle">
           <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      </div>
+    </div>
+
+    <div id="cardAddPopup" class="popup">
+      <div class="popup__container">
+        <form class="popup__form" name="edit-form">
+          <h2 class="popup__title">Новое место</h2>
+          <input type="text" placeholder="Название" name="inputTitle" required
+            class="popup__input popup__input_type_title">
+          <input type="text" placeholder="Ссылка на картинку" name="inputSubtitle" required
+            class="popup__input popup__input_type_subtitle">
+          <button type="submit" class="popup__save-button">Создать</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>

@@ -1,46 +1,3 @@
-// Находим блок profile, текущие значения и кнопку в DOM
-const profile = document.querySelector('.profile');
-const profileName = profile.querySelector('.profile__name');
-const profileAbout = profile.querySelector('.profile__subtitle');
-const button = profile.querySelector('.profile__edit-button');
-
-// Находим поля и кнопки попапа
-const popup = document.querySelector('.popup');
-const inputName = popup.querySelector('.popup__input_type_name');
-const inputAbout = popup.querySelector('.popup__input_type_about');
-const save = popup.querySelector('.popup__form');
-const close = popup.querySelector('.popup__close-button');
-
-// Открываем попап и присваиваем инпутам значения из профиля
-function openPopup() {
-  inputName.value = profileName.textContent;
-  inputAbout.value = profileAbout.textContent;
-  popup.classList.add('popup_opened');
-}
-
-// Закрываем попап
-function closePopup() {
-  popup.classList.remove('popup_opened');
-}
-
-// Присваиваем полям новые значения и закрываем попап
-function updateFields(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileAbout.textContent = inputAbout.value;
-  closePopup();
-}
-
-// Запускаем попап при нажатии на кнопку редактирования
-button.addEventListener('click', openPopup);
-
-// Закрываем попап при нажатии на крестик
-close.addEventListener('click', closePopup);
-
-// При сохранении меняем текст полей
-save.addEventListener('submit', updateFields);
-
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -76,7 +33,6 @@ function addCard(title, link) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__image').src = link;
-  console.log(link);
   cardElement.querySelector('.card__title').textContent = title;
 
   // Изменение состояния кнопки Лайк по клику
@@ -86,10 +42,98 @@ function addCard(title, link) {
   }
   likeButton.addEventListener('click', changeLikeState);
 
-  grid.append(cardElement);
+  return cardElement;
 }
 
 // Добавляем на загруженную страницу базовые 6 карточек
 initialCards.forEach(function (card) {
-  addCard(card.name, card.link);
+  grid.append(addCard(card.name, card.link));
 });
+
+
+// Код для работы с попапами (формами)
+
+// Находим блок profile, текущие значения и кнопки в DOM
+const profile = document.querySelector('.profile');
+const profileName = profile.querySelector('.profile__name');
+const profileAbout = profile.querySelector('.profile__subtitle');
+const profileEditButton = profile.querySelector('.profile__edit-button');
+const profileAddButton = profile.querySelector('.profile__add-button');
+
+// Находим и возвращаем элементы попапа в DOM
+function getPopup(popup) {
+  const inputTitle = popup.querySelector('.popup__input_type_title');
+  const inputSubtitle = popup.querySelector('.popup__input_type_subtitle');
+  const submitButton = popup.querySelector('.popup__form');
+  const closeButton = popup.querySelector('.popup__close-button');
+  return [inputTitle, inputSubtitle, submitButton, closeButton];
+}
+
+// Функция, закрывающая попап редактирования профиля
+function closeProfileUpdatePopup() {
+  profileUpdatePopup.classList.remove('popup_opened');
+}
+
+// Открываем попап профиля и присваиваем инпутам значения из него
+function openProfileUpdatePopup() {
+  inputName.value = profileName.textContent;
+  inputAbout.value = profileAbout.textContent;
+  profileUpdatePopup.classList.add('popup_opened');
+}
+
+// Функция сохранения новых значений профиля
+function updateFields(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
+  closeProfileUpdatePopup()
+}
+
+// Находим и настраиваем попап редактирования профиля
+const profileUpdatePopup = document.querySelector('#profileUpdatePopup');
+const [inputName, inputAbout, saveButton, closeButton] = getPopup(profileUpdatePopup);
+// Запускаем попап при нажатии на кнопку редактирования
+profileEditButton.addEventListener('click', openProfileUpdatePopup);
+// Закрываем попап при нажатии на крестик
+closeButton.addEventListener('click', closeProfileUpdatePopup);
+// При сохранении меняем текст полей
+saveButton.addEventListener('submit', updateFields);
+
+// Открываем пустой попап добавления новой карточки
+function openCardAddPopup() {
+  cardName.value = "";
+  cardLink.value = "";
+  cardAddPopup.classList.add('popup_opened');
+}
+
+// Функция, закрывающая попап добавления новой карточки
+function closeCardAddPopup() {
+  cardAddPopup.classList.remove('popup_opened');
+}
+
+// Функция добавления новой карточки через форму
+function addNewCard(evt) {
+  evt.preventDefault();
+  newCard = {
+    name: cardName.value,
+    link: cardLink.value
+  }
+  grid.prepend(addCard(cardName.value, cardLink.value));
+  closeCardAddPopup();
+}
+
+// Находим и настраиваем попап добавления карточки
+const cardAddPopup = document.querySelector('#cardAddPopup');
+const [cardName, cardLink, addButton, cancelButton] = getPopup(cardAddPopup);
+// Запускаем попап при нажатии на кнопку добавления (+)
+profileAddButton.addEventListener('click', openCardAddPopup);
+// Закрываем попап при нажатии на крестик
+cancelButton.addEventListener('click', closeCardAddPopup);
+// При нажатии на кнопку создаем новую карточку и закрываем форму
+addButton.addEventListener('submit', addNewCard);
+
+
+
+
+
+
