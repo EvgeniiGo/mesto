@@ -74,9 +74,6 @@ function addCard(title, link) {
     image.alt = cardTitle.textContent;
     imageName.textContent = cardTitle.textContent;
     openPopup(imagePopup);
-
-    // Активируем кнопку закрытия попапа с картинкой
-    activateClosePopupButton(imagePopup);
   })
 
   // Измененяем состояние кнопки Лайк по клику
@@ -97,52 +94,57 @@ function addCard(title, link) {
 function getPopup(popup) {
   const inputTitle = popup.querySelector('.popup__input_type_title');
   const inputSubtitle = popup.querySelector('.popup__input_type_subtitle');
-  const popupForm = popup.querySelector('.popup__form');
-  return [inputTitle, inputSubtitle, popupForm];
+  return [inputTitle, inputSubtitle];
 }
 
-
+// Находим и возвращаем форму попапа
+function getPopupForm(popup) {
+  return popup.querySelector('.popup__form');
+}
 
 // Добавляем на загруженную страницу базовые 6 карточек
 initialCards.forEach(function (card) {
   grid.append(addCard(card.name, card.link));
 });
 
+// Активируем кнопки закрытия попапов
+activateClosePopupButton(profileUpdatePopup);
+activateClosePopupButton(cardAddPopup);
+activateClosePopupButton(imagePopup);
+
+// Объявляем формы попапов
+const profilePopupForm = getPopupForm(profileUpdatePopup);
+const cardPopupForm = getPopupForm(cardAddPopup);
 
 // Запускаем попап при нажатии на кнопку редактирования
 profileEditButton.addEventListener('click', function () {
-  const [inputName, inputAbout, popupForm] = getPopup(profileUpdatePopup);
+  const [inputName, inputAbout] = getPopup(profileUpdatePopup);
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
   openPopup(profileUpdatePopup);
+});
 
-  // Активируем кнопку закрытия попапа
-  activateClosePopupButton(profileUpdatePopup);
-
-  // При сохранении меняем текст полей
-  popupForm.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    profileName.textContent = inputName.value;
-    profileAbout.textContent = inputAbout.value;
-    closePopup(profileUpdatePopup);
-  });
+// При сохранении меняем текст полей
+profilePopupForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const [inputName, inputAbout] = getPopup(profileUpdatePopup);
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
+  closePopup(profileUpdatePopup);
 });
 
 
 // Запускаем попап при нажатии на кнопку добавления (+)
 profileAddButton.addEventListener('click', function () {
-  const [cardName, cardLink, popupForm] = getPopup(cardAddPopup);
   openPopup(cardAddPopup);
-  popupForm.reset();
+  cardPopupForm.reset();
+});
 
-  // Активируем кнопку закрытия попапа
-  activateClosePopupButton(cardAddPopup);
-
-  // При нажатии на кнопку создаем новую карточку и закрываем форму
-  popupForm.addEventListener('submit', function (evt) {
-    evt.preventDefault();
-    grid.prepend(addCard(cardName.value, cardLink.value));
-    closePopup(cardAddPopup);
-  });
+// При нажатии на кнопку создаем новую карточку и закрываем форму
+cardPopupForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const [cardName, cardLink] = getPopup(cardAddPopup);
+  grid.prepend(addCard(cardName.value, cardLink.value));
+  closePopup(cardAddPopup);
 });
 
