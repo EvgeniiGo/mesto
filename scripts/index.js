@@ -108,9 +108,9 @@ initialCards.forEach(function (card) {
 });
 
 // Активируем кнопки закрытия попапов
-activateClosePopupButton(profileUpdatePopup);
-activateClosePopupButton(cardAddPopup);
-activateClosePopupButton(imagePopup);
+document.querySelectorAll('.popup').forEach(function (popup) {
+  activateClosePopupButton(popup);
+})
 
 // Объявляем формы попапов
 const profilePopupForm = getPopupForm(profileUpdatePopup);
