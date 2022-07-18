@@ -59,6 +59,13 @@ function activateClosePopupButton(popup) {
   });
 }
 
+function openImagePopup(link, title) {
+  image.src = link.src;
+  image.alt = title.textContent;
+  imageName.textContent = title.textContent;
+  openPopup(imagePopup);
+}
+
 // Функция добавления новой карточки
 function addCard(title, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -70,10 +77,7 @@ function addCard(title, link) {
 
   // Открывает попап при нажатии на картинку
   cardImage.addEventListener('click', function () {
-    image.src = cardImage.src;
-    image.alt = cardTitle.textContent;
-    imageName.textContent = cardTitle.textContent;
-    openPopup(imagePopup);
+    openImagePopup(cardImage, cardTitle);
   })
 
   // Измененяем состояние кнопки Лайк по клику
