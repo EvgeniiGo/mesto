@@ -41,14 +41,32 @@ const profileAbout = profile.querySelector('.profile__subtitle');
 const profileEditButton = profile.querySelector('.profile__edit-button');
 const profileAddButton = profile.querySelector('.profile__add-button');
 
-// Универсальная функция открытия попапа
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
-
 // Универсальная функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+
+function closePopupByEscape(evt) {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    document.removeEventListener('keydown', closePopupByEscape);
+    closePopup(popup);
+  };
+}
+
+function closePopupByOverlay(evt) {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.target === popup) {
+    document.removeEventListener('click', closePopupByOverlay);
+    closePopup(popup);
+  }
+}
+
+// Универсальная функция открытия попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEscape);
+  document.addEventListener('click', closePopupByOverlay);
 }
 
 // Найти кнопку закрытия попапа и сделать ее рабочей
