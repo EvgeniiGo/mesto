@@ -43,13 +43,14 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 
 // Универсальная функция закрытия попапа
 function closePopup(popup) {
+  document.removeEventListener('keydown', closePopupByEscape);
+  document.removeEventListener('click', closePopupByOverlay);
   popup.classList.remove('popup_opened');
 }
 
 function closePopupByEscape(evt) {
-  const popup = document.querySelector('.popup_opened');
   if (evt.key === "Escape") {
-    document.removeEventListener('keydown', closePopupByEscape);
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   };
 }
@@ -57,7 +58,6 @@ function closePopupByEscape(evt) {
 function closePopupByOverlay(evt) {
   const popup = document.querySelector('.popup_opened');
   if (evt.target === popup) {
-    document.removeEventListener('click', closePopupByOverlay);
     closePopup(popup);
   }
 }
@@ -159,7 +159,6 @@ profilePopupForm.addEventListener('submit', function (evt) {
 // Запускаем попап при нажатии на кнопку добавления (+)
 profileAddButton.addEventListener('click', function () {
   openPopup(cardAddPopup);
-  cardPopupForm.reset();
 });
 
 // При нажатии на кнопку создаем новую карточку и закрываем форму
@@ -168,5 +167,8 @@ cardPopupForm.addEventListener('submit', function (evt) {
   const [cardName, cardLink] = getPopup(cardAddPopup);
   grid.prepend(addCard(cardName.value, cardLink.value));
   closePopup(cardAddPopup);
+  evt.submitter.classList.add('popup__save-button_disabled');
+  evt.submitter.setAttribute('disabled', true);
+  evt.target.reset()
 });
 
